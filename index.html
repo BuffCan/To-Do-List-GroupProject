@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>To-Do-List</h1>
+    <div class="container">
+        <div class="add-to-do">
+            <label id="new-task-label" for="new-task">Add a new To-Do</label>
+            <input id ="new-task" type=text>
+            <button>Add</button>
+        </div>
+        <div class="edit-to-do">
+            <h3>To-Do</h3>
+            <ul id="incomplete-asks">
+                <li><button class="done">Done</button><label>Wash Dishes</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+                <li class ="edit-mode"><button class="done">Done</button><label>Buy Groceries</label><input type="text" value="Buy Groceries" ><button class="edit">Edit</button><button class="delete">Delete</button></li>
+            </ul>
+        </div>
+        <div class="complete-to-do">
+            <h3>Completed Tasks</h3>
+            <ul id="complete-tasks">
+                <li><button class="done">Done</button><label>Pet Cats</label><input type="text"><button class="edit">Edit</button><button class="delete">Delete</button></li>
+            </ul>
+        </div>
+
+
+
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+</html>

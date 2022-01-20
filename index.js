@@ -4,7 +4,7 @@ let addButton=document.querySelector("#add")[0];//get the add button
 console.log(addButton);
 let incompleteTaskHolder=document.getElementById("incomplete-tasks");//get the list of incomplete Tasks / the UL holding them
 console.log(incompleteTaskHolder);
-let completedTasksHolder=document.getElementById("completed-tasks");//get the list of complete Tasks / the UL holding them
+let completedTasksHolder=document.getElementById("complete-tasks");//get the list of complete Tasks / the UL holding them
 console.log(completedTasksHolder);
 
 
@@ -98,6 +98,21 @@ function bindEventsToTasks(taskListItem){
 			
 			
 }
+const save = (content, filename, contentType) => {
+	const a = document.createElement('a');
+	const file = new Blob([content], {type: contentType});
+	
+	a.href= URL.createObjectURL(file);
+	a.download = filename;
+	a.click();
+	
+	URL.revokeObjectURL(a.href);
+  };
+document.querySelector(".save").addEventListener('click', () => {
+//Call To String Method of Task List and save it in variable to be put into Save instead of test	
+	
+	downloadToFile("TEST testTest", 'my-new-file.txt', 'text/plain');
+  });
 
 // Iterate over incomplete list to giva all tasks their functions
 	for (let i=0; i<incompleteTaskHolder.children.length;i++){

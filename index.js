@@ -158,7 +158,7 @@ const save = (content, filename, contentType) => {
 document.querySelector(".save").addEventListener('click', () => {
 //Call To String Method of Task List and save it in variable to be put into Save instead of test	
 	
-	downloadToFile("TEST testTest", 'my-new-file.txt', 'text/plain');
+	save("TEST testTest", 'my-new-file.txt', 'text/plain');
   });
 
 addButton.addEventListener('click', addTask);

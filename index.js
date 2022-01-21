@@ -145,6 +145,21 @@ function bindEventsToTasks(taskListItem){
                 
                 
 }
+const save = (content, filename, contentType) => {
+	const a = document.createElement('a');
+	const file = new Blob([content], {type: contentType});
+	
+	a.href= URL.createObjectURL(file);
+	a.download = filename;
+	a.click();
+	
+	URL.revokeObjectURL(a.href);
+  };
+document.querySelector(".save").addEventListener('click', () => {
+//Call To String Method of Task List and save it in variable to be put into Save instead of test	
+	
+	downloadToFile("TEST testTest", 'my-new-file.txt', 'text/plain');
+  });
 
 addButton.addEventListener('click', addTask);
 

@@ -103,31 +103,24 @@ function deleteTask(){
 function completeTask(){
 	// move task from list incomplete to list complete
 	let listItem = this.parentNode;
+	let doneButton=listItem.querySelector(".done");
 	let containsClass = listItem.classList.contains("complete");
 	if (containsClass){
+	  doneButton.innerText = "Redo";
 	  incompleteTaskHolder.appendChild(listItem);
 	  //bindEventsToTasks(listItem);
 	  listItem.classList.remove("complete");
+	  
 	
 	 // completedTasksHolder.removeChild(listItem);
 	}else{
+		doneButton.innerText = "Done";
 		completedTasksHolder.appendChild(listItem);
 		//bindEventsToTasks(listItem);
 		listItem.classList.add("complete");
+		
 	}
-// move task from list incomplete to list complete
-//maybe remove edit button
-// change Done button so we can switch back to incomplete
-//NEED Class Toogle like editmode used complete in html
-// call eventbinding function
-
 }
-// function completeToIncomplete(){
-//     // move Task from complete to incomplete
-//     // recreate edit button
-//     //rechange Done button
-// 	//NEED Class Toogle like editmode used complete in Html
-// }
 function bindEventsToTasks(taskListItem){
 //select buttons we want
         let doneButton=taskListItem.querySelector(".done");
@@ -157,26 +150,36 @@ const save = (content, filename, contentType) => {
   };
 document.querySelector(".save").addEventListener('click', () => {
 //Call To String Method of Task List and save it in variable to be put into Save instead of test	
+	let contentListIncomplete = "Incomplete Tasks: ";
+	for (let i=0; i<incompleteTaskHolder.children.length;i++){            
+		contentListIncomplete += i+1 + ". " + incompleteTaskHolder.children[i].children[1].innerText + ", ";
+		console.log(contentListIncomplete);
+	}
+	let contentListComplete = "Complete Tasks: "; 
+	// iterate over complete list for function binding
+        for (let j=0; j<completedTasksHolder.children.length;j++){
+        
+            contentListComplete += j + 1 + ". " + completedTasksHolder.children[j].children[1].innerText + ", ";
+			console.log(contentListComplete);
+        }
+	let content = contentListIncomplete + "\n" + contentListComplete;
 	
-	save("TEST testTest", 'my-new-file.txt', 'text/plain');
+	save(content, 'my-new-file.txt', 'text/plain');
   });
 
 addButton.addEventListener('click', addTask);
 
 // Iterate over incomplete list to giva all tasks their functions
-        for (let i=0; i<incompleteTaskHolder.children.length;i++){
-    
-            
+        for (let i=0; i<incompleteTaskHolder.children.length;i++){            
             bindEventsToTasks(incompleteTaskHolder.children[i]);
             console.log(incompleteTaskHolder.children[i]);
         }
     
     
     
-    
+ 
 // iterate over complete list for function binding
         for (let j=0; j<completedTasksHolder.children.length;j++){
-        
             bindEventsToTasks(completedTasksHolder.children[j]);
             console.log(completedTasksHolder.children[j]);
         }

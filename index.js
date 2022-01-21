@@ -4,7 +4,7 @@ let addButton=document.getElementById("add");//get the add button
 console.log(addButton);
 let incompleteTaskHolder=document.getElementById("incomplete-tasks");//get the list of incomplete Tasks / the UL holding them
 console.log(incompleteTaskHolder);
-let completedTasksHolder=document.getElementById("completed-tasks");//get the list of complete Tasks / the UL holding them
+let completedTasksHolder=document.getElementById("complete-tasks");//get the list of complete Tasks / the UL holding them
 console.log(completedTasksHolder);
 
 
@@ -106,13 +106,14 @@ function completeTask(){
 	let containsClass = listItem.classList.contains("complete");
 	if (containsClass){
 	  incompleteTaskHolder.appendChild(listItem);
-	  bindEventsToTasks(listItem);
+	  //bindEventsToTasks(listItem);
+	  listItem.classList.remove("complete");
 	
 	 // completedTasksHolder.removeChild(listItem);
-	}
-	else{
+	}else{
 		completedTasksHolder.appendChild(listItem);
-		bindEventsToTasks(listItem);
+		//bindEventsToTasks(listItem);
+		listItem.classList.add("complete");
 	}
 // move task from list incomplete to list complete
 //maybe remove edit button

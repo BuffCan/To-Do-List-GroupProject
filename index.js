@@ -101,6 +101,19 @@ function deleteTask(){
 
 
 function completeTask(){
+	// move task from list incomplete to list complete
+	let listItem = this.parentNode;
+	let containsClass = listItem.classList.contains("complete");
+	if (containsClass){
+	  incompleteTaskHolder.appendChild(listItem);
+	  bindEventsToTasks(listItem);
+	
+	 // completedTasksHolder.removeChild(listItem);
+	}
+	else{
+		completedTasksHolder.appendChild(listItem);
+		bindEventsToTasks(listItem);
+	}
 // move task from list incomplete to list complete
 //maybe remove edit button
 // change Done button so we can switch back to incomplete
